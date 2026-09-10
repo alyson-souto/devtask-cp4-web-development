@@ -210,6 +210,30 @@ const Tarefa = () => {
                 </button>
             </form>
 
+            {/* FILTROS */}
+            <div className="flex gap-2 mb-6">
+                <button
+                    onClick={() => setFiltro("todas")}
+                    className="bg-indigo-950 hover:bg-indigo-400 transition-colors text-amber-300 px-3 py-2 rounded-xl"
+                >
+                    Todas
+                </button>
+
+                <button
+                    onClick={() => setFiltro("pendentes")}
+                    className="bg-indigo-950 hover:bg-indigo-400 transition-colors text-amber-300 px-3 py-2 rounded-xl"
+                >
+                    Pendentes
+                </button>
+
+                <button
+                    onClick={() => setFiltro("concluidas")}
+                    className="bg-indigo-950 hover:bg-indigo-400 transition-colors text-amber-300 px-3 py-2 rounded-xl"
+                >
+                    Concluídas
+                </button>
+            </div>
+
             
             )}
 

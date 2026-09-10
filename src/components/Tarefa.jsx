@@ -136,10 +136,88 @@ const Tarefa = () => {
         return true;
     });
 
-   
+    // INTERFACE
+    // =====================================================
+    return (
+        <div className="max-w-md mx-auto mt-10 bg-black rounded-2xl shadow-lg border border-amber-300 p-6">
+            {/* TÍTULO */}
+            <h1 className="text-2xl font-bold text-white mb-6 text-center">
+                DevTask
+            </h1>
+
+            {/* Adição de imagem/gif, trazendo leve e interessante personalidade ao projeto */}
+            <img 
+                src='/system.gif'
+                alt='Samurai'
+                className='w-30 mx-auto mt-2 mb-4 rounded-full'
+            />
+
+            {/* FORMULÁRIO */}
+            <form
+                onSubmit={AdicionarTarefa}
+                className="space-y-3 mb-6"
+            >
+
+                {/* NOME */}
+                <input
+                    type="text"
+                    value={nome}
+                    // onChange acontece quando o usuário altera o conteúdo do campo.
+                    
+                    // e.target.value pega aquilo
+                    // que foi digitado.
+                    onChange={(e) => setNome(e.target.value)}
+                    placeholder="Nome da tarefa"
+                    className="w-full px-4 py-2 border border-gray-500 hover:border-amber-300 bg-gray-800 hover:bg-gray-500 rounded-2xl text-white transition-colors"
+                />
+
+                {/* DATA */}
+                <input
+                    // type="date" - Transforma o input em um seletor de data. Quando o usuário clica nele, o próprio navegador 
+                    // abrirá um calendário para escolher o dia, mês e ano.
+                    type="date"
+                    value={data}
+                    onChange={(e) => setData(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-500 hover:border-amber-300 bg-gray-800 hover:bg-gray-500 rounded-2xl text-white transition-colors"
+                />
+
+                {/* DESCRIÇÃO */}
+                <textarea
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                    placeholder="Descrição da tarefa"
+                    rows="3"
+                    className="w-full px-4 py-2 border border-gray-500 hover:border-amber-300 bg-gray-800 hover:bg-gray-500 rounded-2xl text-white transition-colors"
+                />
+
+                {/* PRIORIDADE */}
+                <select
+                    value={prioridade}
+                    onChange={(e) => setPrioridade(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-500 hover:border-amber-300 bg-gray-800 hover:bg-gray-500 rounded-2xl text-white transition-colors"
+                >
+                    <option>Baixa</option>
+                    <option>Média</option>
+                    <option>Alta</option>
+                </select>
+
+                {/* BOTÃO */}
+                <button
+                    type="submit"
+                    className="w-full bg-indigo-950 hover:bg-indigo-400 text-amber-300 font-medium px-5 py-2 rounded-2xl transition-colors cursor-pointer"
+                >
+                    Adicionar
+                </button>
+            </form>
+
+            
+            )}
+
+        </div>
+    );
+}
     
 
 
 export default Tarefa;
-
 

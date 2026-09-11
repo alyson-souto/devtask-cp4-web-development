@@ -234,7 +234,79 @@ const Tarefa = () => {
                 </button>
             </div>
 
-            
+            {/* LISTA */}
+            <ul className="space-y-3">
+                {/* MAP() - percorre a lista e apresenta cada tarefa na tela. */}
+                {tarefasFiltradas.map((tarefa) => (
+                    <li
+                        key={tarefa.id}
+                        className="p-4 bg-indigo-800 hover:bg-indigo-600 border border-amber-300 rounded-2xl shadow-sm"
+                    >
+                        {/* NOME */}
+                        <h2
+                            className={
+                                tarefa.concluida
+                                    // Transição interessante quando o usuário clicar em concluir e desfazer a tarefa
+                                    // ? e : - No React Substitui a estrutura tradicional do If e Else
+                                    //           line-through - responsável por trazer o texto tachado com a percepção visual da tarefa estar concluída
+                                    ? "font-bold line-through text-gray-400"
+                                    : "font-bold text-gray-100"
+                            }
+                        >
+                            {tarefa.nome}
+                        </h2>
+
+                        {/* DATA */}
+                        <p className="text-sm text-amber-200">
+                            Data: {tarefa.data}
+                        </p>
+
+                        {/* DESCRIÇÃO */}
+                        <p className="mt-2 text-gray-100">
+                            {tarefa.descricao}
+                        </p>
+
+                        {/* PRIORIDADE */}
+                        <p className="text-sm mt-2 text-amber-200">
+                            Prioridade: {tarefa.prioridade}
+                        </p>
+
+                        {/* BOTÕES */}
+                        <div className="flex gap-2 mt-3">
+                            {/* CALLBACK COncluir - Quando o botão for clicado, é chamado ConcluirTarefa().
+                                O ID da tarefa é enviado/resgatado para a função.
+                            */}
+                            <button
+                                onClick={() => ConcluirTarefa(tarefa.id)}
+                                className="bg-green-700 hover:bg-green-500 transition-colors text-white px-3 py-2 rounded-xl"
+                            >
+                                {tarefa.concluida
+                                    ? "Desfazer"
+                                    : "Concluir"}
+                            </button>
+
+                            {/* CALLBACK Excluir - Quando o botão for clicado, é chamado RemoverTarefa()
+                                ID da tarefa é enviado/resgatado para a função.
+                            */}
+                            <button
+                                onClick={() => RemoverTarefa(tarefa.id)}
+                                className="bg-red-700 hover:bg-red-500 transition-colors text-white px-3 py-2 rounded-xl"
+                            >
+                                Excluir
+                            </button>
+                        </div>
+                    </li>
+                ))}
+
+            </ul>
+
+            {/* NENHUMA TAREFA - área para orientar ao usuário que não há nenhuma tarefa naquela seção */}
+            {/* comparação sem utilizar If ou Else */}
+            {/* Compara, SE NÃO TIVER TAREFAS DEIXA A MENSAGEM NENHUMA TAREFA ENCONTRADA */}
+            {tarefasFiltradas.length === 0 && (
+                <p className="text-center mt-5 text-white">
+                    Nenhuma tarefa encontrada.
+                </p>
             )}
 
         </div>

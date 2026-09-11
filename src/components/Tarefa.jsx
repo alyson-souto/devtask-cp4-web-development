@@ -147,7 +147,10 @@ const Tarefa = () => {
 
             {/* Adição de imagem/gif, trazendo leve e interessante personalidade ao projeto */}
             <img 
-                src='/system.gif'
+                // antes -> src='/system.gif'
+                // react+vite é diferente no github
+                // agora é necessário essa estrutura para o github pages reconhecer o caminho para resgatar a imagem/gif utilizado
+                src={`${import.meta.env.BASE_URL}system.gif`}
                 alt='Samurai'
                 className='w-30 mx-auto mt-2 mb-4 rounded-full'
             />
